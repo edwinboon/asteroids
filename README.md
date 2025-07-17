@@ -130,10 +130,6 @@ Feel free to fork this project and submit pull requests for any improvements:
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 🎮 Screenshots
-
-_(Add screenshots of your game in action here)_
-
 ## 🐛 Known Issues
 
 - Game exits immediately on collision (no restart option)
