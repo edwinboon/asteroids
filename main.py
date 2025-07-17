@@ -7,7 +7,12 @@ from player import Player
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    player = Player(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
+
+    updatables = pygame.sprite.Group()
+    drawables = pygame.sprite.Group()
+
+    Player.containers = (updatables, drawables)
+    Player(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
 
     clock = pygame.time.Clock()
     dt = 0
@@ -18,10 +23,13 @@ def main():
             if event.type == pygame.QUIT:
                 return
 
-        player.update(dt)
+        updatables.update(dt)
 
         screen.fill("black")
-        player.draw(screen)
+
+        for obj in drawables:
+            obj.draw(screen)
+
         pygame.display.flip()
 
         dt = clock.tick(60) / 1000  # Convert milliseconds to seconds
